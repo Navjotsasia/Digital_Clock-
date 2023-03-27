@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: #000000;
+        }
+        #clock{
+            margin-left: 3.6em;
+            margin-top: 0em;
+            font-size: 100px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            width: 6em;
+            border: 1px solid black;
+            background-color: black;
+        }
+        footer{
+            width:15em;
+            height: 3em;
+            border: 1px solid rgb(255, 255, 255);
+            margin-top: 10em ;
+            margin-left:32.7em ;
+            background-color: black;
+        }
+        .child{
+            width: 7.37em;
+            height: 3em;        
+            border: 1px solid rgb(255, 255, 255);
+            float: left;
+            display: inline-block;
+            background-color: black;
+            color: white;
+        }
+    </style>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="currentTime()">
+    <h1 style="text-align: center;margin-top: 6em;color: white;">Clock</h1>
+        <div id="clock">00</div>
+
+        <footer>
+            <div class="child"><a href="clock.html"><i class="fa fa-clock-o" style="font-size:36px; margin: 0.16em 1.2em;"></i></a></div>
+            <div class="child"><a href="yoyo.html"><i class="fa fa-hourglass-half" style="font-size:30px; margin: 0.28em 1.5em;"></i></a></div>
+        </footer>
+    <script>
+        function currentTime() {
+  let date = new Date(); 
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
+  let session = "AM";
+
+  if(hh === 0){
+      hh = 12;
+  }
+  if(hh > 12){
+      hh = hh - 12;
+      session = "PM";
+   }
+
+   hh = (hh < 10) ? "0" + hh : hh;
+   mm = (mm < 10) ? "0" + mm : mm;
+   ss = (ss < 10) ? "0" + ss : ss;
+    
+   let time = hh + ":" + mm + ":" + ss + " " + session;
+
+  document.getElementById("clock").innerText = time; 
+  let t = setTimeout(function(){ currentTime() }, 1000);
+}
+
+currentTime();
+    </script>
+</body>
+</html>
